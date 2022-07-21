@@ -10,6 +10,7 @@ def monday(request):
 def tuesday(request):
     return HttpResponse('Список дел на вторник')
 
+
 def get_the_day_of_the_week(request, dayOfWeek):
     dct = {
         'monday': 'в понедельник я жалею себя',
@@ -25,3 +26,9 @@ def get_the_day_of_the_week(request, dayOfWeek):
         return HttpResponse(dct[dayOfWeek])
     else:
         return HttpResponse('Такого дня нет')
+
+
+def get_the_day_of_the_week_by_number(request, dayOfWeek:int):
+    if 1 <= dayOfWeek <= 7:
+        return HttpResponse(f'Сегодня {dayOfWeek} день недели')
+    return HttpResponse(f'Неверный номер дня - {dayOfWeek}')
