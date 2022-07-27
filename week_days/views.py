@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 def get_the_day_of_the_week(request, dayOfWeek):
-    dct = {
+    dictionary_of_days_of_the_week = {
         'monday': 'в понедельник я жалею себя',
         'tuesday': 'во вторник - глазею в пропасть',
         'wednesday': 'в среду решаю проблему мирового голода (никому не говорите)',
@@ -13,8 +13,8 @@ def get_the_day_of_the_week(request, dayOfWeek):
         'saturday': 'в субботу - борьба с презрением к себе',
         'sunday': 'в воскресенье - иду на рождество'
     }
-    if dayOfWeek in dct:
-        return HttpResponse(dct[dayOfWeek])
+    if dayOfWeek in dictionary_of_days_of_the_week:
+        return HttpResponse(dictionary_of_days_of_the_week[dayOfWeek])
     else:
         return HttpResponse('Такого дня нет')
 
