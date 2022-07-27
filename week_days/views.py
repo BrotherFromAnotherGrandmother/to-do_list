@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 
 
@@ -24,5 +24,6 @@ def get_the_day_of_the_week_by_number(request, dayOfWeek: int):
     list_days_of_week = list(dictionary_of_days_of_the_week)
     if 1 <= dayOfWeek <= 7:
         day_of_the_week = list_days_of_week[dayOfWeek-1]
-        return HttpResponseRedirect(f'/todo_week/{day_of_the_week}')
+        redirect_url = reverse('alias_for_the_day', args=(day_of_the_week, ))
+        return HttpResponseRedirect(redirect_url)
     return HttpResponse(f'Неверный номер дня - {dayOfWeek}')
