@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 
 
@@ -18,12 +18,15 @@ def get_circle_area(request, radius):
 
 
 def get_rectangle_area_by_get(request, width, height):
-    return HttpResponseRedirect(f'/calculate_geometry/rectangle/{width}/{height}/')
+    redirect_url = reverse('rectangle', args=(width, height))
+    return HttpResponseRedirect(redirect_url)
 
 
 def get_square_area_by_get(request, width):
-    return HttpResponseRedirect(f'/calculate_geometry/square/{width}/')
+    redirect_url = reverse('square', args=(width,))
+    return HttpResponseRedirect(redirect_url)
 
 
 def get_circle_area_by_get(request, radius):
-    return HttpResponseRedirect(f'/calculate_geometry/circle/{radius}/')
+    redirect_url = reverse('circle', args=(radius,))
+    return HttpResponseRedirect(redirect_url)
