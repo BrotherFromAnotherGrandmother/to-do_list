@@ -1,5 +1,6 @@
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
 
 
 # Create your views here.
@@ -27,3 +28,7 @@ def get_the_day_of_the_week_by_number(request, dayOfWeek: int):
         redirect_url = reverse('alias_for_the_day', args=(day_of_the_week, ))
         return HttpResponseRedirect(redirect_url)
     return HttpResponse(f'Неверный номер дня - {dayOfWeek}')
+
+
+def spisok_del(request):
+    return render(request, 'week_days/greeting.html')
